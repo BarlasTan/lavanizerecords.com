@@ -1,0 +1,164 @@
+/* Lavanize Records — visual lock: Latex Red #FF0033, Void Black #000000, 90s pixel texture,
+   pre-CGI survival horror, industrial basement light. No external fonts, scripts or trackers. */
+:root {
+  --red: #ff0033;
+  --blood: #7a0018;
+  --black: #000;
+  --coal: #0b0b0b;
+  --bone: #e9e3d7;
+  --ash: #8f8a83;
+  --line: #2a0a10;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --gutter: 16px;
+  --max: 1100px;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--black); color-scheme: dark; }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--bone);
+  font: 16px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Film grain and CRT scanlines over everything; purely decorative. */
+body::before, body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+body::before {
+  opacity: .09;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after { background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px); }
+
+a { color: var(--red); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+img, svg { max-width: 100%; }
+
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 40; background: rgba(0,0,0,.86); border-bottom: 1px solid var(--line); backdrop-filter: blur(4px); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 56px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--bone); font: 700 14px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.brand img { width: 24px; height: 24px; image-rendering: pixelated; }
+.nav { display: flex; gap: 18px; font: 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.nav a { color: var(--ash); }
+.nav a:hover { color: var(--bone); text-decoration: none; }
+
+/* Hero: one red bulb in a concrete basement. */
+.hero {
+  position: relative;
+  padding: 72px 0 56px;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,0,51,.22), transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 120%, #140306, transparent 60%);
+  border-bottom: 1px solid var(--line);
+}
+.kicker { font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--red); margin: 0 0 18px; }
+.display {
+  margin: 0;
+  font: 800 clamp(40px, 9vw, 104px)/.92 var(--mono);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: var(--bone);
+  text-shadow: 3px 0 0 rgba(255,0,51,.75), -1px 0 0 rgba(255,255,255,.08);
+}
+.display .red { color: var(--red); text-shadow: none; }
+.lede { max-width: 640px; margin: 22px 0 0; font-size: clamp(16px, 2.2vw, 19px); color: var(--bone); }
+.lede .muted { color: var(--ash); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 18px;
+  border: 2px solid var(--red);
+  color: var(--bone);
+  font: 700 13px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  background: transparent;
+}
+.btn:hover { background: var(--red); color: var(--black); text-decoration: none; }
+.btn.solid { background: var(--red); color: var(--black); }
+.btn.solid:hover { background: var(--bone); border-color: var(--bone); }
+.btn.soon { border-style: dashed; border-color: #4a1420; color: var(--ash); cursor: default; }
+.btn.soon:hover { background: transparent; color: var(--ash); }
+.btn .tag { font-weight: 400; color: var(--ash); letter-spacing: .08em; }
+
+/* Checkerboard dither: the 90s pixel divider. */
+.dither { height: 8px; background: repeating-conic-gradient(var(--red) 0 25%, transparent 0 50%) 0 0 / 4px 4px; opacity: .55; }
+
+section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+.label { font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--red); margin: 0 0 14px; }
+h2 { margin: 0 0 18px; font: 800 clamp(26px, 4.5vw, 44px)/1 var(--mono); text-transform: uppercase; letter-spacing: -.01em; }
+p { margin: 0 0 14px; }
+.muted { color: var(--ash); }
+
+.grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .grid.two { grid-template-columns: 1fr 1fr; } .grid.three { grid-template-columns: repeat(3, 1fr); } }
+
+.card { border: 1px solid var(--line); background: linear-gradient(180deg, #0d0204, #050505); padding: 22px; }
+.card h3 { margin: 0 0 8px; font: 700 18px/1.2 var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+
+/* Catalogue: release rows with catalogue numbers. */
+.catalog { width: 100%; border-collapse: collapse; font: 14px/1.4 var(--mono); }
+.catalog th, .catalog td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.catalog th { color: var(--ash); font-weight: 400; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+.catalog td.cat { color: var(--red); white-space: nowrap; }
+.catalog td.title { color: var(--bone); }
+.catalog tr.tba td.title { color: var(--ash); }
+.table-scroll { overflow-x: auto; }
+
+.mask { width: 128px; height: 128px; image-rendering: pixelated; filter: drop-shadow(0 0 18px rgba(255,0,51,.45)); }
+
+/* Label hero: the 53-tooth seal under the red bulb. */
+.hero-label { display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .hero-label { grid-template-columns: 1.4fr 1fr; } }
+.hero-seal { justify-self: center; width: min(300px, 64vw); height: auto; filter: drop-shadow(0 0 36px rgba(255,0,51,.45)); }
+.flicker { animation: flicker 6s infinite steps(1); }
+@keyframes flicker { 0%, 100% { opacity: 1; } 41% { opacity: .55; } 42% { opacity: 1; } 77% { opacity: .8; } 78% { opacity: 1; } 79% { opacity: .4; } 80% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .flicker { animation: none; } }
+
+.artist { display: grid; gap: 22px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .artist { grid-template-columns: 160px 1fr; } }
+
+.list { margin: 0; padding: 0; list-style: none; }
+.list li { padding: 10px 0; border-bottom: 1px dashed var(--line); font: 14px/1.5 var(--mono); }
+.list li::before { content: "▮ "; color: var(--red); }
+
+footer { padding: 36px 0 48px; font: 12px/1.7 var(--mono); color: var(--ash); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer a { color: var(--ash); }
+footer a:hover { color: var(--bone); }
+
+/* Legal pages */
+.legal { padding: 48px 0 64px; max-width: 760px; }
+.legal h1 { font: 800 clamp(28px, 5vw, 44px)/1 var(--mono); text-transform: uppercase; margin: 0 0 24px; }
+.legal h2 { font-size: 18px; margin: 28px 0 10px; }
+.todo { background: rgba(255,0,51,.12); border: 1px dashed var(--red); padding: 0 4px; color: var(--bone); }
+
+@media (max-width: 520px) {
+  .nav { gap: 12px; } .nav .hide-sm { display: none; } section { padding: 48px 0; } .hero { padding: 56px 0 44px; }
+  /* Catalogue on phones: keep number, title and date; artist and format are implied. */
+  .catalog th:nth-child(2), .catalog td:nth-child(2), .catalog th:nth-child(4), .catalog td:nth-child(4) { display: none; }
+}
+
+/* Minimal pre-release page: one mark in the dark, one line, one contact. */
+.solo {
+  min-height: calc(100svh - 110px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 56px var(--gutter) 32px;
+  text-align: center;
+  background: radial-gradient(ellipse 55% 45% at 50% 42%, rgba(255,0,51,.14), transparent 70%);
+}
+.solo-mark { margin: 0 0 30px; line-height: 0; }
+.solo-mark img { width: min(288px, 62vw); height: auto; image-rendering: pixelated; }
+.solo-name { margin: 0 0 12px; font: 800 clamp(20px, 4vw, 30px)/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--bone); }
+.solo-line { margin: 0 0 12px; font: 400 14px/1.4 var(--mono); letter-spacing: .32em; color: var(--bone); }
+.solo-meta { margin: 0 0 30px; font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--ash); }
+.solo-contact { margin: 0; font: 13px/1.6 var(--mono); letter-spacing: .06em; }
+.solo-contact a { color: var(--bone); }
+.solo-contact a:hover { color: var(--red); }
