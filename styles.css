@@ -156,9 +156,11 @@ footer a:hover { color: var(--bone); }
 }
 .solo-mark { margin: 0 0 30px; line-height: 0; }
 .solo-mark img { width: min(288px, 62vw); height: auto; image-rendering: pixelated; }
+.solo-mark.wide img { width: min(440px, 84vw); }
+.solo-soon { margin: 0 0 12px; font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--ash); }
 .solo-name { margin: 0 0 12px; font: 800 clamp(20px, 4vw, 30px)/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--bone); }
 .solo-line { margin: 0 0 12px; font: 400 14px/1.4 var(--mono); letter-spacing: .32em; color: var(--bone); }
-.solo-meta { margin: 0 0 30px; font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--ash); }
-.solo-contact { margin: 0; font: 13px/1.6 var(--mono); letter-spacing: .06em; }
+.solo-meta { margin: 0 0 12px; font: 12px/1 var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--ash); }
+.solo-contact { margin: 18px 0 0; font: 13px/1.6 var(--mono); letter-spacing: .06em; }
 .solo-contact a { color: var(--bone); }
 .solo-contact a:hover { color: var(--red); }
